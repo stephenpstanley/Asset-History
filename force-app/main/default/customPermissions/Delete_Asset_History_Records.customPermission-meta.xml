@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allow deletion of Asset history records without deleting the parent asset connected via the Master Detail Relationship. This is intended for use if history does need to be kept for more than a certain time period or  if trying to save storage space</description>
+    <isLicensed>false</isLicensed>
+    <label>Delete Asset History Records</label>
+</CustomPermission>

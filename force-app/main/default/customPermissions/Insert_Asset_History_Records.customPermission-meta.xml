@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allow insert of Asset history records without editing the parent asset connected via the Master Detail Relationship. This is intended for use if you need to load history data when first installing the package</description>
+    <isLicensed>false</isLicensed>
+    <label>Insert Asset History Records</label>
+</CustomPermission>
