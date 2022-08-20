@@ -1,18 +1,19 @@
-# Salesforce DX Project: Next Steps
+Salesforce package to recreate Asset History using custom objects and triggers to allow reporting
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Salesforce has a standard feature which logs changes to records.
 
-## How Do You Plan to Deploy Your Changes?
+You can select certain fields to track and display the field history in the History related list of an object. When Field Audit Trail isn't enabled, field history data is retained for up to 18 months, and up to 24 months via the API. If Field Audit Trail is enabled, field history data is retained until manually deleted. You can manually delete field history data at any time. Field history tracking data doesn’t count against your data storage limits.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Modifying any of these fields adds an entry to the History related list. All entries include the date, time, nature of the change, and who made the change. Not all field types are available for historical trend reporting. Certain changes, such as case escalations, are always tracked.
 
-## Configure Your Salesforce DX Project
+Salesforce stores an object’s tracked field history in an associated object called StandardObjectNameHistory or CustomObjectName__History. For example, AccountHistory represents the history of changes to the values of an Account record’s fields. Similarly, MyCustomObject__History tracks field history for the MyCustomObject__c custom object.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+Asset seems to be an object where you can track history and can view the change history on a related list on the Asset detail page, but no report type is available to allow you to report on it
 
-## Read All About It
+This package creates a custom AssetHistory object, manages adding records to the AssetHistory object when the source Asset record is created or edited and allows reporting usinf a standard report Assets with Histories.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Because it's supposed to be emulating audit history, editing history records is prevented.
+
+By default inserting records is prevented (but can be allowed if a custom permission called "Insert Asset History Records" is assigned to the user). This permission will allow you to load in history if you have already enabled field tracking on the Asset object and can extract existing history using the Salesforce API
+
+Standard history field tracking record do not count towards storage limits, but because this is a custom solution, these records are counted as storage. Since this is intended to be an audit function, by default deleting history records is prevented unless the source Asset is delete (in which case the standard cascade delete process is carried out. If a custom permission called "Delete Asset History Records" is assigned to the user, then history records can be deleted, for example if your retention policies allow you to delete history records after a certain time or if you want to save storage space
