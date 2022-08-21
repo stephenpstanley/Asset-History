@@ -1,0 +1,16 @@
+#Installation instructions
+
+This is a private managed package so it has not gone through the Salesforce security review.  
+You can view the source code in this gitHub project if you want to see what it does and how it works.
+
+Once installed, all edits to Asset records will be logged.  
+It logs edits to all fields, not just 20 and automatically handles additional custom fields added to the Asset object
+Note that if a field has Classic Encryption, the fact that the field has been edited will; be logged but the before and after values will not be saved
+
+When an Asset record is deleted, all custom history records are also deleted.
+
+If you want to load in data (perhaps onb first installation and copy existing history from the standard history tracking, then assign the Custom Permission "Insert Asset History Records" to the running user
+If you want to delete history data without deleting the source asset (perhaps to reduce storage consumption or as part of your retention policies, then the user must be assigned the Custom Permission "Delete Asset History Records" 
+
+
+If you find any issues, please log an issue in https://github.com/stephenpstanley/Asset-History/issues
