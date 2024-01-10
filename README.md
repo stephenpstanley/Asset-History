@@ -12,7 +12,7 @@ Salesforce stores an object’s tracked field history in an associated object ca
 
 Asset seems to be an object where you can track history and can view the change history on a related list on the Asset detail page, but no report type is available to allow you to report on it
 
-This package creates a custom AssetHistory object, manages adding records to the AssetHistory object when the source Asset record is created or edited and allows reporting usinf a standard report Assets with Histories.
+This package creates a custom AssetHistory object, manages adding records to the AssetHistory object when the source Asset record is created or edited and allows reporting using a standard report Assets with Histories.
 
 Because it's supposed to be emulating audit history, editing history records is prevented.
 
