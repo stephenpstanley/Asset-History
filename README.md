@@ -4,7 +4,7 @@ Salesforce package to recreate Asset History using custom objects and triggers t
 
 Salesforce has a standard feature which logs changes to records.
 
-You can select certain fields to track and display the field history in the History related list of an object. When Field Audit Trail isn't enabled, field history data is retained for up to 18 months, and up to 24 months via the API. If Field Audit Trail is enabled, field history data is retained until manually deleted. You can manually delete field history data at any time. Field history tracking data doesn’t count against your data storage limits.
+You can select certain fields to track and display the field history in the History related list of an object. When Field Audit Trail isn't enabled, field history data is retained for up to 18 months, and up to 24 months via the API. If Field Audit Trail is enabled, field history data is retained until manually deleted or 10 years by default. You can manually delete field history data at any time. Field history tracking data doesn’t count against your data storage limits.
 
 Modifying any of these fields adds an entry to the History related list. All entries include the date, time, nature of the change, and who made the change. Not all field types are available for historical trend reporting. Certain changes, such as case escalations, are always tracked.
 
